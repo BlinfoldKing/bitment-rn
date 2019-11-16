@@ -143,31 +143,33 @@ export default class HomeScreen extends React.Component {
   }
 }
 
-HomeScreen.navigationOptions = {
-  title: 'Bitment',
-  headerRight: <Button
-    onPress={() => alert('This is a button!')}
-    title="Pay"
-    icon={() => (
-      <Icon
-        name="arrow-right"
-        size={15}
-        color="white"
-      />
-    )}
-    style={{
-      marginRight: 50,
-      padding: 3,
-      fontSize: 12
-    }}
-  />,
-  headerStyle: {
-    borderBottomWidth: 3,
-    borderBottomColor: `#ffbb00`
-  },
+HomeScreen.navigationOptions = (props) => {
+  return {
+    title: 'Bitment',
+    headerRight: <Button
+      onPress={() => props.navigation.navigate('PayScreen')}
+      title="Pay"
+      icon={() => (
+        <Icon
+          name="arrow-right"
+          size={15}
+          color="white"
+        />
+      )}
+      style={{
+        marginRight: 50,
+        padding: 3,
+        fontSize: 12
+      }}
+    />,
+    headerStyle: {
+      borderBottomWidth: 3,
+      borderBottomColor: `#ffbb00`
+    },
 
 
-};
+  }
+}
 
 function DevelopmentModeNotice() {
   if (__DEV__) {

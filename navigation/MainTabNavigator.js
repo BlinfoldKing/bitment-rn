@@ -7,6 +7,10 @@ import HomeScreen from '../screens/HomeScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import AddGoalScreen from '../screens/AddGoalScreen';
+import PayScreen from '../screens/PayScreen';
+import TransactionScreen from '../screens/TransactionScreen';
+import RewardScreen from '../screens/RewardScreen';
+import GoalsList from '../screens/GoalsList';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -16,7 +20,11 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
-    AddGoal: AddGoalScreen
+    PayScreen: PayScreen,
+    AddGoal: AddGoalScreen,
+    Transaction: TransactionScreen,
+    GoalList: GoalsList,
+    Reward: RewardScreen
   },
   config
 );
