@@ -1,21 +1,23 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
+import { HistoryCard } from '../components/HistoryCard'
 import { ExpoLinksView } from '@expo/samples';
 
-export default function LinksScreen() {
+export default function HistoryScreen() {
   return (
     <ScrollView style={styles.container}>
-      {/**
-       * Go ahead and delete ExpoLinksView and replace it with your content;
-       * we just wanted to provide you with some helpful links.
-       */}
-      <ExpoLinksView />
+      <HistoryCard />
+
     </ScrollView>
   );
 }
 
-LinksScreen.navigationOptions = {
-  title: 'Links',
+HistoryScreen.navigationOptions = {
+  title: 'History',
+  headerStyle: {
+    borderBottomWidth: 3,
+    borderBottomColor: `#ffbb00`
+  },
 };
 
 const styles = StyleSheet.create({
@@ -23,5 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
+    backgroundColor: '#EFF3F8',
+    padding: 10
   },
 });

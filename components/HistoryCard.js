@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ProgressBarAndroid, Button } from 'react-native';
 
-export function GoalCard(props) {
+export function HistoryCard(props) {
     console.log(props)
     return (
         <View style={{
@@ -14,20 +14,8 @@ export function GoalCard(props) {
                 fontWeight: 'bold',
                 fontSize: 18
             }}>
-                {props.data && props.data.title}
+                Kuliah di standford
             </Text>
-            <Text style={{
-                color: 'rgba(33, 46, 64, 0.6)',
-                fontSize: 12
-            }}>
-                Rp. {props.data && props.data.current}/Rp.{props.data && props.data.target}
-            </Text>
-            <ProgressBarAndroid
-                styleAttr="Horizontal"
-                color="#7DBE46"
-                indeterminate={false}
-                progress={props.data ? props.data.current / props.data.target : 0}
-            />
             <View style={{
                 marginTop: 10,
                 flexDirection: 'row',
@@ -38,17 +26,27 @@ export function GoalCard(props) {
                         color: 'rgba(33, 46, 64, 0.6)',
                         fontSize: 10
                     }}>
-                        Monthly Recommendation
+                        Transaction Amount
                     </Text>
                     <Text style={{
                         fontSize: 12
                     }}>
-                        Rp. 300.676/month
+                        Rp. 300.676
                     </Text>
                 </View>
-                <Button
-                    title="Deposit"
-                />
+                <View>
+                    <Text style={{
+                        color: 'rgba(33, 46, 64, 0.6)',
+                        fontSize: 10
+                    }}>
+                        Cashback
+                    </Text>
+                    <Text style={{
+                        fontSize: 12
+                    }}>
+                        Rp. 35.000
+                    </Text>
+                </View>
             </View>
         </View>
     );

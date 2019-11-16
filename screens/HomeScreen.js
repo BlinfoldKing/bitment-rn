@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Button,
   View,
+  FlatList,
 } from 'react-native';
 
 import {
@@ -17,89 +18,129 @@ import {
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView
-        style={{
-          ...styles.container,
-          backgroundColor: '#EFF3F8'
-        }}
-        contentContainerStyle={styles.contentContainer}>
-        <View style={{
-          backgroundColor: '#4287f5',
-          paddingHorizontal: 30,
-          paddingVertical: 15
-        }}>
+export default class HomeScreen extends React.Component {
+  state = {
+    dummy: [
+      {
+        id: 0,
+        title: 'Kuliah Di standford',
+        current: 10000,
+        target: 20000,
+        year: 2025
+      }
+    ]
+
+  }
+  addGoal = (title, target, year) => {
+    console.log(title, target, year)
+    this.setState({
+      dummy: [
+        ...this.state.dummy, {
+          title,
+          target,
+          year,
+          current: 0,
+          id: this.state.dummy.length
+        }
+      ]
+    })
+  }
+  render(props) {
+
+    return (
+      <View style={styles.container}>
+        <ScrollView
+          style={{
+            ...styles.container,
+            backgroundColor: '#EFF3F8'
+          }}
+          contentContainerStyle={styles.contentContainer}>
           <View style={{
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 50
-          }}>
-            <View>
-              <Text style={{ color: 'white' }}>
-                Account Balance
-            </Text>
-              <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>
-                Rp 3.000.000
-            </Text>
-            </View>
-            <View>
-              <Text style={{ color: 'white' }}>
-                Account Balance
-            </Text>
-              <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>
-                Rp 3.000.000
-            </Text>
-            </View>
-          </View>
-          <View style={{
-            backgroundColor: 'white',
-            borderRadius: 5,
-            padding: 15,
-            marginTop: 10
-          }}>
-            <Text style={{
-              color: '#4287f5',
-              fontSize: 10
-            }}>
-              Total Investment Projection
-            </Text>
-            <Text style={{
-              fontSize: 30,
-              color: '#4287f5'
-            }}>
-              Rp 300.000.000.000
-            </Text>
-          </View>
-        </View>
-        <View>
-          <View style={{
-            padding: 10,
-            paddingTop: 20,
+            backgroundColor: '#4287f5',
+            paddingHorizontal: 30,
+            paddingVertical: 15
           }}>
             <View style={{
+              flex: 1,
               flexDirection: 'row',
               justifyContent: 'space-between',
+              paddingHorizontal: 50
             }}>
-              <Text>
-                Saving Goals
-              </Text>
-              <TouchableOpacity>
-                <Text style={{
-                  color: '#4287f5'
-                }}>
-                  Add Goals
-                </Text>
-              </TouchableOpacity>
+              <View>
+                <Text style={{ color: 'white' }}>
+                  Account Balance
+            </Text>
+                <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>
+                  Rp 3.000.000
+            </Text>
+              </View>
+              <View>
+                <Text style={{ color: 'white' }}>
+                  Account Balance
+            </Text>
+                <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>
+                  Rp 3.000.000
+            </Text>
+              </View>
             </View>
-            <GoalCard />
+            <View style={{
+              backgroundColor: 'white',
+              borderRadius: 5,
+              padding: 15,
+              marginTop: 10
+            }}>
+              <Text style={{
+                color: '#4287f5',
+                fontSize: 10
+              }}>
+                Total Investment Projection
+            </Text>
+              <Text style={{
+                fontSize: 30,
+                color: '#4287f5'
+              }}>
+                Rp 300.000.000.000
+            </Text>
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </View>
-  );
+          <View>
+            <View style={{
+              padding: 10,
+              paddingTop: 20,
+            }}>
+              <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}>
+                <Text>
+                  Saving Goals
+              </Text>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('AddGoal', {
+                    onSave: this.addGoal
+                  })}
+                >
+                  <Text style={{
+                    color: '#4287f5'
+                  }}>
+                    Add Goals
+                </Text>
+                </TouchableOpacity>
+              </View>
+              <FlatList
+                data={this.state.dummy}
+                renderItem={({ item }) => {
+                  console.log(item)
+                  return < GoalCard data={item} />
+                }}
+                keyExtractor={(item) => `${item.id}`}
+              />
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+    );
+  }
 }
 
 HomeScreen.navigationOptions = {
@@ -124,6 +165,7 @@ HomeScreen.navigationOptions = {
     borderBottomWidth: 3,
     borderBottomColor: `#ffbb00`
   },
+
 
 };
 
@@ -250,3 +292,4 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
