@@ -1,0 +1,7 @@
+#Sat Nov 16 17:47:40 WIB 2019
+base.1=/Users/ganeshadanu/projects/bitmentRN/android/app/build/intermediates/transforms/dexMerger/debug/1
+path.1=classes.dex
+base.0=/Users/ganeshadanu/projects/bitmentRN/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
