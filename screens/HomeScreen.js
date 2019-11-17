@@ -131,7 +131,7 @@ export default class HomeScreen extends React.Component {
                 data={this.state.dummy}
                 renderItem={({ item }) => {
                   console.log(item)
-                  return < GoalCard data={item} />
+                  return < GoalCard data={item} navigation={this.props.navigation} />
                 }}
                 keyExtractor={(item) => `${item.id}`}
               />

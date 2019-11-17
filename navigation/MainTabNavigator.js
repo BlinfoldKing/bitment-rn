@@ -11,6 +11,7 @@ import PayScreen from '../screens/PayScreen';
 import TransactionScreen from '../screens/TransactionScreen';
 import RewardScreen from '../screens/RewardScreen';
 import GoalsList from '../screens/GoalsList';
+import VendorList from '../screens/VendorList';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -24,7 +25,8 @@ const HomeStack = createStackNavigator(
     AddGoal: AddGoalScreen,
     Transaction: TransactionScreen,
     GoalList: GoalsList,
-    Reward: RewardScreen
+    Reward: RewardScreen,
+    Vendor: VendorList
   },
   config
 );

@@ -48,6 +48,9 @@ export function GoalCard(props) {
                 </View>
                 <Button
                     title="Deposit"
+                    onPress={() => {
+                        props.navigation.navigate('Vendor')
+                    }}
                 />
             </View>
         </View>
